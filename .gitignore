@@ -31,5 +31,5 @@
 *.out
 *.app
 
-# vscode configure files
-*.vscode/
+# Visual Studio Code configuration
+*/.vis
