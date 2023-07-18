@@ -9,18 +9,34 @@ using namespace std;
 template <class T>
 class AddElements
 {
+
+public:
     T element1;
 
 public:
-    AddElements<T>(T arg1) { element1 = arg1; }
+    AddElements (T arg1) {
+        element1 = arg1;
+    }
 
-    T add(T element2) { return element1 + element2; }
+    T add(T element2) {
+        return element1 + element2;
+    }
 
-    T concatenate(string element2) { return element1 + element2; }
+    T concatenate(string element2) {
+        return element1 + element2;
+    }
 };
+
+int start_up()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    return 0;
+}
 
 int main()
 {
+    int static r = start_up();
     int n, i;
     cin >> n;
     for (i = 0; i < n; i++)

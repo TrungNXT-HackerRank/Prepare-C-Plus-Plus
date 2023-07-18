@@ -34,3 +34,8 @@
 # Visual Studio Code configuration
 */.vscode
 tempCodeRunnerFile.cpp
+
+# Clion configuration
+*/.idea
+CmakeLists.txt
+cmake-build-debug/
