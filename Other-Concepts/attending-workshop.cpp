@@ -3,7 +3,6 @@
 //
 
 #include<bits/stdc++.h>
-#include<algorithm>
 
 using namespace std;
 
@@ -20,20 +19,19 @@ struct Available_Workshops
 {
     int n;
     vector<Workshop> workshops;
-    Available_Workshops() {};
 };
 
 Available_Workshops* initialize(int* start_time, int* duration, int n)
 {
-    auto aw =  new Available_Workshops();
+    auto aw = new Available_Workshops();
     aw->n = n;
     for (int i=0; i < n; i++)
     {
-        Workshop x;
-        x.start_time_ = start_time[i];
-        x.duration_ = duration[i];
-        x.end_time_ = start_time[i] + duration[i];
-        aw->workshops.push_back(x);
+        Workshop current_workshop;
+        current_workshop.start_time_ = start_time[i];
+        current_workshop.duration_ = duration[i];
+        current_workshop.end_time_ = start_time[i] + duration[i];
+        aw->workshops.push_back(current_workshop);
     }
     return aw;
 }
@@ -49,7 +47,7 @@ int CalculateMaxWorkshops(Available_Workshops* ptr)
     int currentEndtime = 0;
     sort(ptr->workshops.begin(), ptr->workshops.end());
     // int currentEndtime = ptr->workshops[0].end_time_;
-    for (Workshop w: ptr->workshops)
+    for (const Workshop& w: ptr->workshops)
     {
         if (!(w.start_time_ < currentEndtime))
         {
@@ -77,5 +75,9 @@ int main(int argc, char *argv[]) {
     Available_Workshops * ptr;
     ptr = initialize(start_time,duration, n);
     cout << CalculateMaxWorkshops(ptr) << endl;
+//  prevent leak memory
+    delete ptr;
+    delete[] start_time;
+    delete[] duration;
     return 0;
 }
